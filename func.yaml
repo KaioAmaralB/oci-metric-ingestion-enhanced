@@ -1,0 +1,26 @@
+schema_version: 20180708
+name: oci-metric-ingestion
+version: 0.0.0
+runtime: python
+build_image: fnproject/python:3.11-dev
+run_image: fnproject/python:3.11
+entrypoint: /python/bin/fdk /function/func.py handler
+memory: 1024 #altere conforme necessidade
+timeout: 60 #altere conforme necessidade
+config:
+  AUTH_METHOD: <AUTH_METHOD> #oauth ou token
+  DYNATRACE_TENANT: <URL_TENANT>
+
+  FUNCTION_SAFETY_MARGIN_SECONDS: "5" #altere conforme necessidade
+  FUNCTION_TIMEOUT_SECONDS: "60" #altere conforme necessidade
+  HTTP_BACKOFF_BASE_SECONDS: "0.5" #altere conforme necessidade
+  HTTP_CONNECT_TIMEOUT_SECONDS: "3" #altere conforme necessidade
+  HTTP_MAX_ATTEMPTS: "3" #altere conforme necessidade
+  HTTP_READ_TIMEOUT_SECONDS: "10" #altere conforme necessidade
+  IMPORT_ALL_METRICS: "True" #True possibilita ingerir qualquer métrica, False será ingerido apenas métricas que estejam mapeadas no metric_mapping.py
+  LOG_LEVEL: INFO
+  MAX_LINES_PER_REQUEST: "5000" #altere conforme necessidade
+  MAX_PAYLOAD_BYTES: "524288" #altere conforme necessidade
+  OAUTH_ACCOUNT_URN: <OAUTH_ACCOUNT_URN>
+  OAUTH_CLIENT_ID: <OAUTH_CLIENT_ID>
+  OAUTH_CLIENT_SECRET: <OAUTH_CLIENT_SECRET>

@@ -1,0 +1,3 @@
+fdk>=0.1.83
+requests
+setuptools>=70.0.0
